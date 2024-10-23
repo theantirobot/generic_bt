@@ -2,20 +2,16 @@
 from __future__ import annotations
 
 import logging
-from typing import Any
 
 from homeassistant.components.binary_sensor import BinarySensorEntity
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import STATE_ON
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers import entity_platform
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
-from homeassistant.helpers.restore_state import RestoreEntity
 
 from .const import DOMAIN, Schema
 from .coordinator import GenericBTCoordinator
 from .entity import GenericBTEntity
-from .generic_bt_api.device import GenericBTDevice
 
 
 # Initialize the logger
