@@ -24,7 +24,7 @@ PARALLEL_UPDATES = 0
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback) -> None:
-    """Set up Switchbot based on a config entry."""
+    """Set up Generic BT device based on a config entry."""
     coordinator: GenericBTCoordinator = hass.data[DOMAIN][entry.entry_id]
     async_add_entities([GenericBTBinarySensor(coordinator)])
 
@@ -39,7 +39,7 @@ class GenericBTBinarySensor(GenericBTEntity, BinarySensorEntity):
     _attr_name = None
 
     def __init__(self, coordinator: GenericBTCoordinator) -> None:
-        """Initialize the Switchbot."""
+        """Initialize the Device."""
         super().__init__(coordinator)
 
     @property

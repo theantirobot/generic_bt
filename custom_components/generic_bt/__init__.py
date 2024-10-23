@@ -1,4 +1,4 @@
-"""Support for Switchbot devices."""
+"""Support for generic bluetooth devices."""
 
 import logging
 
