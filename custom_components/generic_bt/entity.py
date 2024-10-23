@@ -1,17 +1,10 @@
-"""An abstract class common to all Switchbot entities."""
+"""An abstract class common to all Generic BT entities."""
 from __future__ import annotations
 
-from collections.abc import Mapping
 import logging
-from typing import Any
-
-from switchbot import Switchbot, SwitchbotDevice
 
 from homeassistant.components.bluetooth.passive_update_coordinator import PassiveBluetoothCoordinatorEntity
-from homeassistant.const import ATTR_CONNECTIONS
-from homeassistant.core import callback
 from homeassistant.helpers import device_registry as dr
-from homeassistant.helpers.entity import ToggleEntity
 
 from .coordinator import GenericBTCoordinator
 

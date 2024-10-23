@@ -2,20 +2,16 @@
 from __future__ import annotations
 
 import logging
-from typing import Any
 
 from homeassistant.components.binary_sensor import BinarySensorEntity
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import STATE_ON
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers import entity_platform
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
-from homeassistant.helpers.restore_state import RestoreEntity
 
 from .const import DOMAIN, Schema
 from .coordinator import GenericBTCoordinator
 from .entity import GenericBTEntity
-from .generic_bt_api.device import GenericBTDevice
 
 
 # Initialize the logger
@@ -24,7 +20,7 @@ PARALLEL_UPDATES = 0
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback) -> None:
-    """Set up Switchbot based on a config entry."""
+    """Set up Generic BT device based on a config entry."""
     coordinator: GenericBTCoordinator = hass.data[DOMAIN][entry.entry_id]
     async_add_entities([GenericBTBinarySensor(coordinator)])
 
@@ -39,7 +35,7 @@ class GenericBTBinarySensor(GenericBTEntity, BinarySensorEntity):
     _attr_name = None
 
     def __init__(self, coordinator: GenericBTCoordinator) -> None:
-        """Initialize the Switchbot."""
+        """Initialize the Device."""
         super().__init__(coordinator)
 
     @property

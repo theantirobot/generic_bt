@@ -1,6 +1,6 @@
 """Constants"""
 import voluptuous as vol
-from enum import Enum, auto
+from enum import Enum
 
 from homeassistant.helpers.config_validation import make_entity_service_schema
 import homeassistant.helpers.config_validation as cv

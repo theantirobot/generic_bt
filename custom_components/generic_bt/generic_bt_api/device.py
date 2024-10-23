@@ -3,11 +3,9 @@
 from uuid import UUID
 import asyncio
 import logging
-from contextlib import AsyncExitStack, asynccontextmanager
+from contextlib import AsyncExitStack
 
 from bleak import BleakClient
-from bleak.backends.device import BLEDevice
-from bleak.backends.scanner import AdvertisementData
 from bleak.exc import BleakError
 
 _LOGGER = logging.getLogger(__name__)
