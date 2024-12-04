@@ -12,6 +12,7 @@ from homeassistant.components.bluetooth import BluetoothServiceInfoBleak, async_
 from homeassistant.const import CONF_ADDRESS
 from homeassistant.data_entry_flow import FlowResult
 
+from bleak import BleakError
 from .const import DOMAIN
 from .generic_bt_api.device import GenericBTDevice
 
@@ -51,7 +52,8 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             device = GenericBTDevice(discovery_info.device)
             try:
                 await device.update()
-            except BLEAK_EXCEPTIONS:
+
+            except BleakError:
                 errors["base"] = "cannot_connect"
             except Exception:  # pylint: disable=broad-except
                 _LOGGER.exception("Unexpected error")
