@@ -1,9 +1,9 @@
-from homeassistant.components.button import Button
+from homeassistant.components.button import ButtonEntity
 from .coordinator import GenericBTCoordinator
 from .entity import GenericBTEntity
 
 
-class PairButton(GenericBTEntity, Button):
+class PairButton(GenericBTEntity, ButtonEntity):
     _attr_name = None
 
     def __init__(self, coordinator: GenericBTCoordinator) -> None:
