@@ -9,6 +9,8 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers import entity_platform
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
+from custom_components.generic_bt.button import PairButton
+
 from .const import DOMAIN, Schema
 from .coordinator import GenericBTCoordinator
 from .entity import GenericBTEntity
@@ -23,7 +25,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_e
     """Set up Generic BT device based on a config entry."""
     coordinator: GenericBTCoordinator = hass.data[DOMAIN][entry.entry_id]
     async_add_entities([GenericBTBinarySensor(coordinator)])
-
+    async_add_entities([PairButton(coordinator)])
     platform = entity_platform.async_get_current_platform()
     platform.async_register_entity_service("write_gatt", Schema.WRITE_GATT.value, "write_gatt")
     platform.async_register_entity_service("read_gatt", Schema.READ_GATT.value, "read_gatt")

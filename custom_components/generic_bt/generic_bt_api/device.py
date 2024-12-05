@@ -44,6 +44,10 @@ class GenericBTDevice:
             else:
                 _LOGGER.debug("Connection reused")
 
+    async def pair(self):
+        await self.get_client()
+        await self._client.pair()
+
     async def write_gatt(self, target_uuid, data):
         await self.get_client()
         uuid_str = "{" + target_uuid + "}"
